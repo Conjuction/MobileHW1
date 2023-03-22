@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.accessibilityId;
@@ -23,5 +25,34 @@ public class SearchTests extends TestBase {
         step("Verify content found", () ->
                 $$(id("org.wikipedia.alpha:id/page_list_item_title"))
                         .shouldHave(sizeGreaterThan(0)));
+    }
+
+    @Test()
+    @Tag("ios")
+    void iosCheckInputTest() {
+        step("Type search", () -> {
+            $(accessibilityId("Text Button")).click();
+        });
+        step("Check that text input should be visible ", () -> {
+            $(accessibilityId("Text Input")).shouldBe(visible);
+        });
+    }
+
+    @DisplayName("Проверка текста на кнопке в форме входа")
+    @Test
+    @Tag("android")
+    void CheckButtonLogIn() {
+
+        step("Click on the NavBar Menu button", () -> {
+            $(id("org.wikipedia.alpha:id/menu_overflow_button")).click();
+        });
+        step("Check button log in", () -> {
+            $(id("org.wikipedia.alpha:id/explore_overflow_account_name")).shouldHave(text("Log in to Wikipedia"));
+            $(id("org.wikipedia.alpha:id/explore_overflow_account_name")).click();
+        });
+
+        step("Check text on button at login form", () -> {
+            $(id("org.wikipedia.alpha:id/login_button")).shouldHave(text("Log in"));
+        });
     }
 }
