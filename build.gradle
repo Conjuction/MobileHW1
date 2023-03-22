@@ -56,9 +56,3 @@ tasks.withType(Test) {
         }
     }
 }
-task android_test(type: Test) {
-    environment "platform", "android"
-    useJUnitPlatform {
-        includeTags 'android'
-    }
-}
