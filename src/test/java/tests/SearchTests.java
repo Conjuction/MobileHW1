@@ -27,11 +27,16 @@ public class SearchTests extends TestBase {
                         .shouldHave(sizeGreaterThan(0)));
     }
 
-    @Test
     @Tag("ios")
-    void androidCheckNewsHeaderTest() {
-        step("check value 'In the news' on page", () -> {
-            $(id("org.wikipedia.alpha:id/view_card_header_title")).shouldHave(text("In the news"));
+    @Test
+    public void searchIosTest() {
+        step("iOS type search", () -> {
+            $(id("Text Button")).click();
+            $(id("Text Input")).sendKeys("hello@browserstack.com");
+            $(id("Text Input")).pressEnter();
+        });
+        step("Verify content found", () -> {
+            $(id("Text Output")).shouldHave((text("hello@browserstack.com")));
         });
     }
 
