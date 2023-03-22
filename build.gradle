@@ -58,7 +58,12 @@ tasks.withType(Test) {
 }
 task android_test(type: Test) {
     useJUnitPlatform {
-        includeTags("android")
+        includeTags 'android'
     }
-    systemProperties(System.getProperties())
+}
+
+task ios_test(type: Test) {
+    useJUnitPlatform {
+        includeTags 'ios'
+    }
 }
