@@ -1,5 +1,6 @@
 package tests;
 
+import io.appium.java_client.AppiumBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -30,12 +31,15 @@ public class SearchTests extends TestBase {
     @Tag("ios")
     @Test
     public void searchIosTest() {
-        step("Type search", () -> {
+
+        step("Click on the 'Text' and enter mail", () -> {
             $(accessibilityId("Text Button")).click();
-            $(accessibilityId("Text Input")).sendKeys("hello@browserstack.com");
+            $(id("Text Input")).sendKeys("hello@browserstack.com");
         });
-        step("Verify content found", () ->
-                $(accessibilityId("Text Output")).shouldBe(visible));
+        step("Checking the result", () -> {
+            $(id("Text Output"))
+                    .shouldHave(visible);
+        });
     }
 
     @DisplayName("Checking text in due order")
