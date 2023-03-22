@@ -27,18 +27,15 @@ public class SearchTests extends TestBase {
                         .shouldHave(sizeGreaterThan(0)));
     }
 
-    @Test()
+    @Test
     @Tag("ios")
-    void iosCheckInputTest() {
-        step("Type search", () -> {
-            $(accessibilityId("Text Button")).click();
-        });
-        step("Check that text input should be visible ", () -> {
-            $(accessibilityId("Text Input")).shouldBe(visible);
+    void androidCheckNewsHeaderTest() {
+        step("check value 'In the news' on page", () -> {
+            $(id("org.wikipedia.alpha:id/view_card_header_title")).shouldHave(text("In the news"));
         });
     }
 
-    @DisplayName("Проверка текста на кнопке в форме входа")
+    @DisplayName("Checking text in due order")
     @Test
     @Tag("android")
     void CheckButtonLogIn() {
