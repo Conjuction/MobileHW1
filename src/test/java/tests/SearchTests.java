@@ -28,19 +28,6 @@ public class SearchTests extends TestBase {
                         .shouldHave(sizeGreaterThan(0)));
     }
 
-    @Tag("ios")
-    @Test
-    public void searchIosTest() {
-
-        step("Click on the 'Text' and enter mail", () -> {
-            $(accessibilityId("Text Button")).click();
-            $(id("Text Input")).sendKeys("hello@browserstack.com");
-        });
-        step("Checking the result", () -> {
-            $(id("Text Output"))
-                    .shouldHave(visible);
-        });
-    }
 
     @DisplayName("Checking text in due order")
     @Test

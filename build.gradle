@@ -62,10 +62,3 @@ task android_test(type: Test) {
         includeTags 'android'
     }
 }
-
-task ios_test(type: Test) {
-    environment "platform", "ios"
-    useJUnitPlatform {
-        includeTags 'ios'
-    }
-}
