@@ -21,6 +21,7 @@ dependencies {
             "io.github.bonigarcia:webdrivermanager:5.2.1",
             "org.slf4j:slf4j-simple:2.0.6"
     )
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 
     allure {
         version.set("2.20.1")
@@ -52,17 +53,5 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
-    }
-}
-
-task android_test(type: Test) {
-    useJUnitPlatform {
-        includeTags 'android'
-    }
-}
-
-task ios_test(type: Test) {
-    useJUnitPlatform {
-        includeTags 'ios'
     }
 }

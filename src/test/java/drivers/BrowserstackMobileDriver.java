@@ -19,25 +19,26 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
-        MutableCapabilities mutableCapabilities = new MutableCapabilities();
-        mutableCapabilities.merge(capabilities);
-        mutableCapabilities.setCapability("browserstack.user", config.login());
-        mutableCapabilities.setCapability("browserstack.key", config.password());
-        mutableCapabilities.setCapability("app", config.appUrl());
-        mutableCapabilities.setCapability("device", config.device());
-        mutableCapabilities.setCapability("os_version", config.osVersion());
-        mutableCapabilities.setCapability("project", config.projectName());
-        mutableCapabilities.setCapability("build", config.buildName());
-        mutableCapabilities.setCapability("name", config.testName());
+            MutableCapabilities mutableCapabilities = new MutableCapabilities();
+            mutableCapabilities.merge(capabilities);
 
-        return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
-    }
+            mutableCapabilities.setCapability("browserstack.user", config.login());
+            mutableCapabilities.setCapability("browserstack.key", config.password());
 
-    public static URL getBrowserstackUrl() {
-        try {
-            return new URL(config.baseUrl());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            mutableCapabilities.setCapability("app", config.appUrl());
+
+            mutableCapabilities.setCapability("device", config.device());
+            mutableCapabilities.setCapability("os_version", config.osVersion());
+
+            mutableCapabilities.setCapability("project", config.projectName());
+            mutableCapabilities.setCapability("build", config.buildName());
+            mutableCapabilities.setCapability("name", config.testName());
+
+            try {
+                return new RemoteWebDriver(
+                        new URL(config.baseUrl()), mutableCapabilities);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
 }

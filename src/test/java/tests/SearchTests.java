@@ -14,7 +14,6 @@ import static org.openqa.selenium.By.id;
 public class SearchTests extends TestBase {
     @DisplayName("Checking search of java")
     @Test
-    @Tag("Android")
     void successfulSearchTest() {
         step("Type search", () -> {
             $(accessibilityId("Search Wikipedia")).click();
