@@ -23,8 +23,6 @@ public interface Config extends org.aeonbits.owner.Config {
     String testName();
     @Key("appiumServer")
     String appiumServer();
-    @Key("platformName")
-    String platformName();
     @Key("deviceName")
     String deviceName();
     @Key("platformVersion")

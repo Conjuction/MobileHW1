@@ -26,10 +26,8 @@ public class TestBase {
                 break;
             case "browserstack":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
+                break;
         }
-
-        Configuration.timeout = 15000;
-        Configuration.pageLoadTimeout = 15000;
         Configuration.browserSize = null;
     }
 
