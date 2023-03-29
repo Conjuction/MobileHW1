@@ -13,7 +13,7 @@ import static org.openqa.selenium.By.id;
 public class SearchTests extends TestBase {
     @DisplayName("Checking onboarding screen")
     @Test
-    @Tag("browserstack")
+    @Tag("emulation")
     public void checkOnboardingScreen() {
 
         step("getting started check", () -> {
