@@ -45,7 +45,7 @@ public class TestBase {
         Attach.pageSource();
         closeWebDriver();
 
-        if (env.equals("emulation")) {
+        if (env.equals("browserstack")) {
             Attach.addVideo(sessionId);
         }
     }
